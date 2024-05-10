@@ -1,2 +1,62 @@
-# audio_watermarking
-The project employs a combination of deep learning techniques to implement audio watermarking functionalities. It utilizes Python and various libraries including Streamlit, Torch, and NumPy. The main functionalities include: 1.Adding Watermark to Audio 2.Decoding Watermark from Audio
+# 音频隐水印项目
+
+## 项目简介
+
+该项目旨在实现对音频文件添加和解码隐水印的功能。隐水印是一种不可见的信息嵌入技术，可以在音频文件中嵌入标识符、所有权信息或其他元数据，以提高音频文件的安全性和可追溯性。
+
+## 技术
+
+该项目使用了以下技术：
+
+- Python 编程语言：作为主要开发语言，提供了丰富的库和工具。
+- PyTorch 深度学习框架：用于实现音频水印添加和解码的深度学习模型。
+- Torch.nn 模块：提供了神经网络模型的构建和训练功能。
+- Torch.optim 模块：用于定义优化器，优化模型参数。
+- models.hinet 模块：自定义的神经网络模块，用于实现水印添加和解码的具体逻辑。
+- models.module_util 模块：提供了模型相关的实用函数和工具。
+
+## 实现逻辑
+
+项目的实现逻辑主要包括以下几个部分：
+
+1. **音频水印添加：** 使用深度学习模型将水印信息嵌入到音频文件中，保证水印的稳定性和不可见性。
+2. **水印解码：** 从带有水印的音频文件中提取水印信息，确保解码的准确性和稳定性。
+
+## 如何上手使用
+
+以下是使用该项目的简要步骤：
+
+1. **环境准备：** 确保您的系统已安装 Python 和 PyTorch。
+2. **下载项目：** 从项目仓库中下载项目文件，并解压到本地目录。
+3. **安装依赖：** 安装项目所需的 Python 依赖库。
+4. **运行项目：** 打开命令行，进入项目目录，并执行 `python main.py` 启动项目。
+5. **使用功能：** 在项目界面中选择相应的功能模块，按照提示操作即可完成水印添加或解码的任务。
+
+## 启动项目
+**streamlit使用方法:**
+每当您想要使用新环境时，首先需要转到项目文件夹（目录所在的位置.venv）并运行命令来激活它：
+````
+# Windows command prompt
+.venv\Scripts\activate.bat
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+
+# macOS and Linux
+source .venv/bin/activate
+````
+激活后，您将在终端提示符开头的括号中看到环境名称。 “（.venv）”
+
+**运行您的 Streamlit 应用程序:**
+
+```streamlit run app.py```
+
+**如果这不起作用，请使用长格式命令：**
+```python -m streamlit run app.py```
+
+要停止 Streamlit 服务器，请按Ctrl+C终端中的 。
+(不要关浏览器，如果关了，先再运行项目，再关闭，不然关不上)
+
+使用完此环境后，输入以下命令返回到普通 shell：
+
+```deactivate```
