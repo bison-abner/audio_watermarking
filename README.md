@@ -60,3 +60,53 @@ source .venv/bin/activate
 使用完此环境后，输入以下命令返回到普通 shell：
 
 ```deactivate```
+
+## 常见问题
+
+**altair包下载不下来**
+
+### 步骤 1: 手动下载包
+
+1. 访问 Anaconda.org：
+   打开浏览器，访问 [Anaconda.org](https://anaconda.org)。
+
+2. 搜索 altair 包：
+   在搜索框中输入“altair”并按回车。在搜索结果中找到 altair 包，通常由多个版本供不同的操作系统使用。
+
+3. 选择合适的版本：
+   根据您的操作系统和 Python 版本选择合适的 altair 包。例如，如果您使用的是 Windows 且 Python 版本为 3.7，那么选择对应的 .tar.bz2 文件进行下载。
+
+4. 下载包：
+   点击所选包旁的下载图标，保存文件到您的计算机上。
+
+### 步骤 2: 本地安装包
+
+1. 在下载完 .tar.bz2 文件后，您可以通过 Conda 从本地文件安装该包：
+
+2. 打开命令行：
+   打开一个命令行窗口（Windows 中为 CMD 或 Anaconda Prompt）。
+
+3. 导航到下载目录：
+   使用 cd 命令导航到包下载的目录。例如：
+   ```bash
+   cd C:\Users\abner\Downloads
+   ```
+
+4. 使用 Conda 安装：
+   运行以下命令以从本地文件安装 altair：
+    ```bush 
+    conda install altair-4.1.0-py37_0.tar.bz2
+   ```
+   
+   请根据您下载的实际文件名替换 altair-4.1.0-py37_0.tar.bz2
+    
+### 步骤 3: 验证安装
+
+1. 安装完成后，您可以通过以下命令验证 altair 是否正确安装
+   ```bush 
+    conda list altair
+   ```
+    这将列出已安装的 altair 包及其版本，确认安装成功。
+
+    通过这些步骤，您应该能够在无法直接通过 Conda 命令或镜像源安装 altair 的情况下，
+手动从 Anaconda.org 下载并安装所需的包。
