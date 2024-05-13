@@ -72,7 +72,7 @@ def audio_watermark_module():
     if "def_value" not in st.session_state:
         st.session_state.def_value = bin_util.binArray2HexStr(np.random.choice([0, 1], size=32 - len_start_bit))
 
-    st.title("深度学习音频水印")
+    st.title("音频水印")
     st.write("选择您要执行的操作:")
 
     action = st.selectbox("选择操作", ["添加水印", "解码水印"])
@@ -131,7 +131,7 @@ def load_model(resume_path):
 
 
 def image_watermark_module():
-    st.title("深度学习图片水印")
+    st.title("图片水印")
     st.write("选择您要执行的操作:")
 
     # 选择操作：添加水印 or 解码水印
@@ -182,7 +182,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 
 # 主函数
 def main():
-    st.title("富文本确权保护系统")
+    st.title("多媒体资源确权系统")
 
     # 创建侧边栏目录
     selected_module = st.sidebar.radio("模块选择", ["音频确权模块", "图片确权模块"])

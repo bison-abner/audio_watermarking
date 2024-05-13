@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/audio_watermarking.iml" filepath="$PROJECT_DIR$/.idea/audio_watermarking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RTR_protection_system.iml" filepath="$PROJECT_DIR$/.idea/RTR_protection_system.iml" />
     </modules>
   </component>
 </project>

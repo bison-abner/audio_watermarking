@@ -125,3 +125,204 @@ source .venv/bin/activate
 
     通过这些步骤，您应该能够在无法直接通过 Conda 命令或镜像源安装 altair 的情况下，
 手动从 Anaconda.org 下载并安装所需的包。
+
+```
+audio_watermarking
+├─ -gitignore.url
+├─ .git
+│  ├─ COMMIT_EDITMSG
+│  ├─ config
+│  ├─ description
+│  ├─ FETCH_HEAD
+│  ├─ HEAD
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  └─ update.sample
+│  ├─ index
+│  ├─ info
+│  │  └─ exclude
+│  ├─ logs
+│  │  ├─ HEAD
+│  │  └─ refs
+│  │     ├─ heads
+│  │     │  └─ master
+│  │     └─ remotes
+│  │        └─ origin
+│  │           └─ master
+│  ├─ objects
+│  │  ├─ 00
+│  │  │  └─ 1adaf2afd7caf65cd7fea6ee991783685d54ca
+│  │  ├─ 0b
+│  │  │  └─ 968aaedad736d5561561f2b6f06136ac12dc67
+│  │  ├─ 10
+│  │  │  └─ 5ce2da2d6447d11dfe32bfb846c3d5b199fc99
+│  │  ├─ 13
+│  │  │  └─ 566b81b018ad684f3a35fee301741b2734c8f4
+│  │  ├─ 18
+│  │  │  ├─ 247337babdb18832ea769edd760f7652c070d7
+│  │  │  └─ dd43b4c193c4205a66561c3c6d76860888bc1e
+│  │  ├─ 1e
+│  │  │  └─ e8d515b430517c5f96ac1db901a5b3c887af59
+│  │  ├─ 22
+│  │  │  └─ 6a9ce235c01d7faddc1c3d9c42a0bbdd3adcf6
+│  │  ├─ 27
+│  │  │  └─ 487cac5f5eb66b7a62e3318839330ee474d4ed
+│  │  ├─ 2c
+│  │  │  └─ 80e1269497d12e018fd6afa29982e56b0fb70d
+│  │  ├─ 31
+│  │  │  └─ cb4a39d1b2b3f083fe2064ffa5bef9845a2780
+│  │  ├─ 39
+│  │  │  └─ 3863463f8aac208bdbbc5aa1ac420bb6c710db
+│  │  ├─ 3d
+│  │  │  └─ b7543883e9370fcc8ba05034dd8ae9b81b69fe
+│  │  ├─ 41
+│  │  │  └─ 3b74cced356d37514d45df3217a8478fd03a0f
+│  │  ├─ 49
+│  │  │  └─ 2a13336ef4233ee081e803e474f94edd8656f2
+│  │  ├─ 50
+│  │  │  └─ 0059d602d30d52983ab4496b6dbbd5dba217b0
+│  │  ├─ 53
+│  │  │  └─ 891ec5fabe74db7b97b8718e9ac066933c75cf
+│  │  ├─ 55
+│  │  │  └─ 96b44786f04e4810aefe9f8d712f08ed310f71
+│  │  ├─ 68
+│  │  │  └─ bc17f9ff2104a9d7b6777058bb4c343ca72609
+│  │  ├─ 6c
+│  │  │  └─ 66e234f88100b4e6d4682480d9ba0787d61d38
+│  │  ├─ 6d
+│  │  │  └─ be3f794a02ca1574853450ff98617c5d781555
+│  │  ├─ 6e
+│  │  │  └─ d1947b70edbda356958b533168578ab7740ab1
+│  │  ├─ 6f
+│  │  │  ├─ 1ee150582bf44de4249b73540c97e1e7bfbbcf
+│  │  │  └─ f7e72030ecb0ed969b3baec0986b91336670f8
+│  │  ├─ 72
+│  │  │  ├─ 6c5938c3a945bf1ec1a1922df9581bbb8c5203
+│  │  │  └─ 836461a4004adeb919b0c910742f134c967b05
+│  │  ├─ 73
+│  │  │  └─ 206e6b18325e12c048822e7fa95c91b3756989
+│  │  ├─ 78
+│  │  │  └─ 4e29a14d25be542f778fecd6c85b3105479439
+│  │  ├─ 7c
+│  │  │  └─ 16d88f92a6fef775104929cb7c5587931927a3
+│  │  ├─ 87
+│  │  │  └─ cd77e19bdf04780a98806fff826655967107ae
+│  │  ├─ 89
+│  │  │  └─ 2ae02dd43cd5cde45168ed6c905e84b48afbe8
+│  │  ├─ 8a
+│  │  │  └─ ac2fe965e7c14c3c5b64cec14feb74dd96d889
+│  │  ├─ 8b
+│  │  │  └─ 2914e631c3d19237308e3b2cb5e3afa6ace5ab
+│  │  ├─ 8d
+│  │  │  └─ 1f22cc19e13dac89a01fc53ba1527d4f459ec8
+│  │  ├─ 94
+│  │  │  └─ a25f7f4cb416c083d265558da75d457237d671
+│  │  ├─ 97
+│  │  │  ├─ 094fe2847704a299ad9e738ec20a64d0dc0dac
+│  │  │  └─ 824ec9b0149e48c91dce4fee530335b327c686
+│  │  ├─ 9b
+│  │  │  ├─ 521f3777b2aa38a8863674c663fb4f88e6b278
+│  │  │  └─ 52b5d040f29ae6af1dbe353a60a50c4412150f
+│  │  ├─ a4
+│  │  │  └─ dac014f229fca0aa2e735ef8927f4ad0b88b43
+│  │  ├─ a5
+│  │  │  ├─ d8e02ff5f832309bfd261f7cd3d0588e913030
+│  │  │  └─ e3e8a216dfd54e9e8eb76452596aa42d109851
+│  │  ├─ b4
+│  │  │  └─ ce554aa0e8a92b1b5950c6420a0b54d403676a
+│  │  ├─ bc
+│  │  │  ├─ 1df13c15ca5dcc247e7210b1c484ab2a6cd4a7
+│  │  │  ├─ 24f260b0d26a239c9334458bacf625bc4d0980
+│  │  │  ├─ ee787b36dca14c2df8762ce42d1b28bc92a1d4
+│  │  │  └─ f44b630b1406a367c86a31db67bed93fbb3ced
+│  │  ├─ c0
+│  │  │  └─ 0c3b92db5dd5098de5f523fb30836dfd26b356
+│  │  ├─ c2
+│  │  │  └─ 8351cbc602370e194a31cca911bca645111f9a
+│  │  ├─ c6
+│  │  │  └─ 1cc15a7dba3c2ae7883a1e1186523b1d1fd7d6
+│  │  ├─ c8
+│  │  │  └─ e029fbf5539255dcfbc12979da89f8868ca1ab
+│  │  ├─ d4
+│  │  │  └─ 7a02988d1501d5c49053a9e75aa47d92c0e5d2
+│  │  ├─ d7
+│  │  │  └─ ea3c7c734938f9d1a0f91523dddb7bcf71af65
+│  │  ├─ da
+│  │  │  └─ 87f061cfc16b8ee7bdd4879d576777d3925c4c
+│  │  ├─ dc
+│  │  │  └─ eb6025fdefc01e355f679d00da377029738c84
+│  │  ├─ de
+│  │  │  └─ 21caffa5b965aab8b4d09e75eb69b2e0db0dc1
+│  │  ├─ df
+│  │  │  └─ 765d626470de5f9afc5273d750953709be58bf
+│  │  ├─ e6
+│  │  │  └─ 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+│  │  ├─ ea
+│  │  │  └─ ecef652cd9540bdd09d519e518e60b232c7804
+│  │  ├─ f4
+│  │  │  └─ 0d4f337bb04a0e03542ee6b5cb86f6be1c779b
+│  │  ├─ f8
+│  │  │  └─ 5393d9a2fd65457dad53a9a285497927ba06a2
+│  │  ├─ info
+│  │  └─ pack
+│  ├─ ORIG_HEAD
+│  └─ refs
+│     ├─ heads
+│     │  └─ master
+│     ├─ remotes
+│     │  └─ origin
+│     │     └─ master
+│     └─ tags
+├─ .gitignore
+├─ .idea
+│  ├─ .gitignore
+│  ├─ .name
+│  ├─ inspectionProfiles
+│  │  └─ profiles_settings.xml
+│  ├─ misc.xml
+│  ├─ modules.xml
+│  ├─ RTR_protection_system.iml
+│  ├─ vcs.xml
+│  └─ workspace.xml
+├─ app.py
+├─ blind watermark
+│  ├─ blind watermark.py
+│  ├─ bwm_core.py
+│  └─ pool.py
+├─ LICENSE
+├─ LICENSE.url
+├─ models
+│  ├─ hinet.py
+│  ├─ invblock.py
+│  ├─ module_util.py
+│  ├─ my_model_v7_recover.py
+│  ├─ rrdb_denselayer.py
+│  └─ __init__.py
+├─ README.md
+├─ README.md.url
+├─ requirements.txt
+├─ step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.pkl
+└─ utils
+   ├─ bin_util.py
+   ├─ file_reader.py
+   ├─ metric_util.py
+   ├─ model_util.py
+   ├─ pesq_util.py
+   ├─ pickle_util.py
+   ├─ silent_util.py
+   ├─ wm_add_v2.py
+   ├─ wm_decode_v2.py
+   └─ __init__.py
+
+```
