@@ -18,23 +18,28 @@ bw_notes.close()
 # 功能：给音频添加水印
 def add_watermark(audio_path, watermark_text):
     assert len(watermark_text) == 5
-
+    # 创建打包后的水印信息
     start_bit, msg_bit, watermark = wm_add_v2.create_parcel_message(len_start_bit, 32, watermark_text)
-
+    # 读取音频数据，并将其转换为16kHz的单声道音频
     data, sr, audio_length_second = file_reader.read_as_single_channel_16k(audio_path, 16000)
-
+    # 将水印嵌入到音频数据中
     _, signal_wmd, time_cost = wm_add_v2.add_watermark(watermark, data, 16000, 0.1, device, model)
-
+    # 生成保存结果文件的临时文件名和路径
     tmp_file_name = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') + "_" + str(uuid.uuid4()) + ".wav"
     tmp_file_path = 'C:/temp/' + tmp_file_name
+    # 将嵌入水印后的音频数据写入到文件
     soundfile.write(tmp_file_path, signal_wmd, sr)
+    # 返回保存的文件路径
     return tmp_file_path
 
 # 功能：从音频中解码水印
 def decode_watermark(audio_path):
+    # 读取音频数据，并将其转换为16kHz的单声道音频
     data, sr, audio_length_second = file_reader.read_as_single_channel_16k(audio_path, 16000)
     data = data[0:5 * sr]
+    # 只处理音频前5秒数据
     start_bit = wm_add_v2.fix_pattern[0:len_start_bit]
+    # 获取固定模式的开始位
     support_count, mean_result, results = wm_decode_v2.extract_watermark_v2(
         data,
         start_bit,
@@ -43,14 +48,15 @@ def decode_watermark(audio_path):
         0.3,
         model,
         device, "best")
-
+    # 如果未提取到水印，返回"无水印"
     if mean_result is None:
         return "无水印"
-
+    # 去掉开始位，获取实际的水印数据
     payload = mean_result[len_start_bit:]
+    # 将二进制数组转换为十六进制字符串
     return bin_util.binArray2HexStr(payload)
 
-# 函数：嵌入水印
+# 函数：嵌入图片文本水印
 def embed_watermark(input_path, output_path, watermark_text='felix is the best!'):
     bwm1 = WaterMark(password_img=1, password_wm=1)
     bwm1.read_img(input_path)
@@ -59,7 +65,7 @@ def embed_watermark(input_path, output_path, watermark_text='felix is the best!'
     len_wm = len(bwm1.wm_bit)
     return len_wm  # 返回水印长度
 
-# 函数：提取水印
+# 函数：提取图片文本水印
 def extract_watermark(input_path, len_wm):
     bwm1 = WaterMark(password_img=1, password_wm=1)
     wm_extract = bwm1.extract(input_path, wm_shape=len_wm, mode='str')
@@ -85,7 +91,7 @@ def audio_watermark_module():
                 f.write(audio_file.getbuffer())
             st.audio(tmp_input_audio_file, format="audio/wav")
 
-            watermark_text = st.text_input("输入水印文本（5个英文字母）", value=st.session_state.def_value)
+            watermark_text = st.text_input("输入水印文本", value=st.session_state.def_value)
 
             add_watermark_button = st.button("添加水印")
             if add_watermark_button:
@@ -101,7 +107,7 @@ def audio_watermark_module():
                         st.write("耗时：%d秒" % encode_time_cost)
 
     elif action == "解码水印":
-        audio_file = st.file_uploader("上传音频文件 (WAV/MP3格式)", type=["wav", "mp3"], accept_multiple_files=False)
+        audio_file = st.file_uploader("上传音频文件 (WAV)", type=["wav"], accept_multiple_files=False)
         if audio_file:
             if st.button("解码水印"):
                 tmp_file_for_decode_path = os.path.join("C:/temp/", audio_file.name)
@@ -143,7 +149,7 @@ def image_watermark_module():
         os.makedirs(output_folder)
 
     if action == "添加水印":
-        uploaded_img = st.file_uploader("上传图片", type=['jpg', 'png', 'jpeg'])
+        uploaded_img = st.file_uploader("上传图片", type=['jpg'])
         if uploaded_img is not None:
             st.image(uploaded_img, caption='上传的图片', use_column_width=True)
             watermark_text = st.text_input("请输入水印文本", "felix is the best!")
@@ -158,7 +164,7 @@ def image_watermark_module():
                 st.markdown(get_binary_file_downloader_html(output_path, '下载水印图片'), unsafe_allow_html=True)
 
     elif action == "解码水印":
-        uploaded_watermarked_img = st.file_uploader("上传带水印的图片", type=['jpg', 'png', 'jpeg'])
+        uploaded_watermarked_img = st.file_uploader("上传带水印的图片", type=['png'])
         len_wm = st.number_input("请输入水印长度（嵌入时记下的长度）", min_value=1, step=1)
         if uploaded_watermarked_img is not None and len_wm is not None:
             st.image(uploaded_watermarked_img, caption='上传的带水印图片', use_column_width=True)

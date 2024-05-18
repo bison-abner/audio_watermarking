@@ -57,10 +57,13 @@ class WaterMarkCore:
         strides = 4 * np.array([self.ca_shape[1] * self.block_shape[0], self.block_shape[1], self.ca_shape[1], 1])
 
         for channel in range(3):
+            # Y（亮度）、U（蓝色色度分量）、V（红色色度分量）。range(3)生成了0, 1, 2这三个索引，分别对应Y, U, V通道。
             self.ca[channel], self.hvd[channel] = dwt2(self.img_YUV[:, :, channel], 'haar')
+            # dwt2函数返回两个数组：self.ca[channel]（近似系数，包含低频信息）和self.hvd[channel]（细节系数，包含高频信息如边缘等）。
             # 转为4维度
             self.ca_block[channel] = np.lib.stride_tricks.as_strided(self.ca[channel].astype(np.float32),
                                                                      self.ca_block_shape, strides)
+            # 使用numpy的stride_tricks.as_strided函数将一维数组转换为四维数组
 
     def read_wm(self, wm_bit):
         self.wm_bit = wm_bit
@@ -77,14 +80,17 @@ class WaterMarkCore:
         # dct->(flatten->加密->逆flatten)->svd->打水印->逆svd->(flatten->解密->逆flatten)->逆dct
         wm_1 = self.wm_bit[i % self.wm_size]
         block_dct = dct(block)
+        # 将图像信号分解成频率分量
 
         # 加密（打乱顺序）
         block_dct_shuffled = block_dct.flatten()[shuffler].reshape(self.block_shape)
         u, s, v = svd(block_dct_shuffled)
+        # 对 DCT 结果应用 SVD
         s[0] = (s[0] // self.d1 + 1 / 4 + 1 / 2 * wm_1) * self.d1
+        # 修改奇异值以嵌入水印
         if self.d2:
             s[1] = (s[1] // self.d2 + 1 / 4 + 1 / 2 * wm_1) * self.d2
-
+        # 对 DCT 变换后的数据进行 SVD 分解，修改奇异值以嵌入水印信息。
         block_dct_flatten = np.dot(u, np.dot(np.diag(s), v)).flatten()
         block_dct_flatten[shuffler] = block_dct_flatten.copy()
         return idct(block_dct_flatten.reshape(self.block_shape))
@@ -184,13 +190,13 @@ class WaterMarkCore:
         return wm_avg
 
     def extract(self, img, wm_shape):
-        self.wm_size = np.array(wm_shape).prod()
+        self.wm_size = np.array(wm_shape).prod()  # 计算水印大小
 
         # 提取每个分块埋入的 bit：
-        wm_block_bit = self.extract_raw(img=img)
+        wm_block_bit = self.extract_raw(img=img)  # 提取原始水印数据
         # 做平均：
-        wm_avg = self.extract_avg(wm_block_bit)
-        return wm_avg
+        wm_avg = self.extract_avg(wm_block_bit)  # 对提取的水印数据进行平均或统计处理
+        return wm_avg  # 返回处理后的水印数据
 
     def extract_with_kmeans(self, img, wm_shape):
         wm_avg = self.extract(img=img, wm_shape=wm_shape)
