@@ -37,7 +37,7 @@ def decode_watermark(audio_path):
     # 读取音频数据，并将其转换为16kHz的单声道音频
     data, sr, audio_length_second = file_reader.read_as_single_channel_16k(audio_path, 16000)
     data = data[0:5 * sr]
-    # 只处理音频前5秒数据
+
     start_bit = wm_add_v2.fix_pattern[0:len_start_bit]
     # 获取固定模式的开始位
     support_count, mean_result, results = wm_decode_v2.extract_watermark_v2(
