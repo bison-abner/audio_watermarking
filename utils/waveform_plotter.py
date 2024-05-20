@@ -16,7 +16,7 @@ def plot_waveform(audio_path, title, output_path=None):
     plt.show()
 
 # 生成原始音频的波形图
-plot_waveform('original_audio.wav', '原始音频', 'original_waveform.png')
+plot_waveform(r'C:\Users\abner\Desktop\毕业设计\test_audio\LibriSpeech_1756-134819-0061.wav', '原始音频', 'original_waveform.png')
 
 # 生成嵌入水印后音频的波形图
-plot_waveform('watermarked_audio.wav', '嵌入水印的音频', 'watermarked_waveform.png')
+plot_waveform(r'C:\Users\abner\Desktop\学习\阿里云盘下载\43c5fec74f0ee06bcc3bbda5a2df88ffb1eb7be04a32344b18bc90a8.wav', '嵌入水印的音频', 'watermarked_waveform.png')

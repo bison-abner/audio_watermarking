@@ -107,7 +107,7 @@ def audio_watermark_module():
                         st.write("耗时：%d秒" % encode_time_cost)
 
     elif action == "解码水印":
-        audio_file = st.file_uploader("上传音频文件 (WAV)", type=["wav"], accept_multiple_files=False)
+        audio_file = st.file_uploader("上传音频文件 (WAV格式)", type=["wav"], accept_multiple_files=False)
         if audio_file:
             if st.button("解码水印"):
                 tmp_file_for_decode_path = os.path.join("C:/temp/", audio_file.name)
