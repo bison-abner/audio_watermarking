@@ -52,10 +52,10 @@ class WaterMark:
     def embed(self, filename=None, compression_ratio=None):
         '''
         :param filename: string
-            Save the image file as filename
+            将图像文件保存为filename
         :param compression_ratio: int or None
-            If compression_ratio = None, do not compression,
-            If compression_ratio is integer between 0 and 100, the smaller, the output file is smaller.
+            If compression_ratio = None, 则不压缩,
+            If compression_ratio 是介于0和100之间的整数，输出文件越小，压缩比越小。
         :return:
         '''
         embed_img = self.bwm_core.embed()
